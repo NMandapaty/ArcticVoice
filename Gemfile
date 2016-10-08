@@ -32,7 +32,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  gem 'rack'
+  gem 'rack', '~> 2.0.1'
   gem 'rake'
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
