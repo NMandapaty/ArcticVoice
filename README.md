@@ -15,8 +15,7 @@ https://arctic-voice.herokuapp.com/
 ###CodeClimate and Travis-CI
 [![Code Climate](https://codeclimate.com/github/NMandapaty/ArcticVoice/badges/gpa.svg)](https://codeclimate.com/github/NMandapaty/ArcticVoice)
 [![Test Coverage](https://codeclimate.com/github/NMandapaty/ArcticVoice/badges/coverage.svg)](https://codeclimate.com/github/NMandapaty/ArcticVoice/coverage)
-TODO(NMandapaty): Add Travis-CI build status
-
+[![Build Status](https://travis-ci.org/NMandapaty/ArcticVoice.svg?branch=master)](https://travis-ci.org/NMandapaty/ArcticVoice)
 
 Things you may want to cover:
 
