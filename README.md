@@ -1,10 +1,13 @@
 # Arctic Voice
-This is a portal that allows researchers and inhabitants of the Arctic share information about the changes in the Arctic.\s
+This portal allows researchers and inhabitants of the Arctic share information about the changes in the Arctic.
 
-Version Informations:\s\s
-Rake: 11.3\s\s
-Ruby: 2.3\s\s
-Rails: 5.0.0.1\s\s
+Version Information:
+
+
+Rake: 11.3  
+Ruby: 2.3  
+Rails: 5.0.0.1  
+
 
 ###Pivotal Tracker Project
 https://www.pivotaltracker.com/n/projects/1887921
