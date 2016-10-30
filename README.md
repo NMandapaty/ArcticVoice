@@ -13,7 +13,7 @@ Rails: 5.0.0.1
 https://www.pivotaltracker.com/n/projects/1887921
 
 ###Heroku Deployment Link
-https://arctic-voice.herokuapp.com/
+https://arcticvoice.herokuapp.com/
 
 ###CodeClimate and Travis-CI
 [![Code Climate](https://codeclimate.com/github/NMandapaty/ArcticVoice/badges/gpa.svg)](https://codeclimate.com/github/NMandapaty/ArcticVoice)
