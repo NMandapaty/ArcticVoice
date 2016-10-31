@@ -5,8 +5,8 @@ Version Information:
 
 
 Rake: 11.3  
-Ruby: 2.3  
-Rails: 5.0.0.1  
+Ruby: 2.2  
+Rails: 4.2.7  
 
 
 ###Pivotal Tracker Project
