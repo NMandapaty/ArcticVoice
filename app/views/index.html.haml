@@ -1,0 +1,24 @@
+-#  This file is app/views/movies/index.html.haml
+%h1 All Movies
+
+#check index for rotten tomatoes for example on how to put search bar and input text field. 
+
+
+%table#Posts
+  %thead
+    %tr
+      %th{:class=>@postClass}
+        %a{ :href => "/sortByTitle", :id => "title_header" } Movie Title
+      %th Rating
+      %th{:class=>@dateClass}
+        %a{ :href => "sortByDate", :id => "release_date_header" } Release Date
+      %th More Info
+  %tbody
+    - @posts.each do |post|
+      %tr
+        %td= post.description
+        %td= post.post_url
+        %td= post.location
+        %td= post.tags
+
+= link_to 'Add new movie', new_movie_path
