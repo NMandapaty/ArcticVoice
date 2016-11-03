@@ -1,0 +1,9 @@
+Arctic Voice
+
+<% @posts.each do |post| %>
+    <%= post.text %>
+    <%= post.description %>
+    <%= post.location %>
+    <%= post.created_at %>
+    <%= post.updated_at %>
+<% end %>
