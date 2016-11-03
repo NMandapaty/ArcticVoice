@@ -1,9 +1,44 @@
-Arctic Voice
+<html>
+    <head>
+        <style>
+      #map {
+        height: 500px;
+        width: 100%;
+      }
+    </style>
+        <script>
 
+      function initMap() {
+        var myLatLng = {lat: 72.792081, lng: -38.714440};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFVlMvTZLC8tadlYb1IQ9VDjQrW5v1a5Y&callback=initMap">
+    </script>
+    </head>
+    
+    <body>
+       Arctic Voice
+<div id="map">
+    
+</div>
 <% @posts.each do |post| %>
     <%= post.text %>
     <%= post.description %>
     <%= post.location %>
     <%= post.created_at %>
     <%= post.updated_at %>
-<% end %>
+<% end %> 
+    </body>
+</html>
