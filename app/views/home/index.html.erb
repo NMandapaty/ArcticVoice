@@ -1,48 +1,47 @@
 <html>
-    <head>
-        <style>
-      #map {
-        height: 500px;
-        width: 100%;
-      }
-    </style>
-        <script>
+<head>
+  <style>
+  #map {
+    height: 500px;
+    width: 100%;
+  }
+  </style>
+  <script>
 
-      function initMap() {
-        var myLatLng = {lat: 72.792081, lng: -38.714440};
+  function initMap() {
+    var myLatLng = {lat: 72.792081, lng: -38.714440};
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: myLatLng
-        });
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: myLatLng
+    });
 
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFVlMvTZLC8tadlYb1IQ9VDjQrW5v1a5Y&callback=initMap">
-    </script>
-    </head>
-    
-    <body>
-       Arctic Voice
-       <form action="" method="GET" >
-         <input type="text" name="search">
-         <input type="submit">
-       </form>
-<div id="map">
-    
-</div>
-<% @posts.each do |post| %>
-    <%= post.text %>
-    <%= post.description %>
-    <%= post.location %>
-    <%= post.created_at %>
-    <%= post.updated_at %>
-<% end %> 
-    </body>
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+  }
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFVlMvTZLC8tadlYb1IQ9VDjQrW5v1a5Y&callback=initMap">
+  </script>
+</head>
+
+<body>
+ Arctic Voice
+ <form action="" method="GET" >
+   <input type="text" name="search">
+   <input type="submit">
+ </form>
+ <td><%= button_to 'Add New Post', {:controller => "posts", :action => "new"} , {:method=>:get}  %></td>
+
+ <div id="map">
+
+ </div>
+ <% @posts.each do |post| %>
+ <%= post.title %>
+ <%= post.location %>
+ <% end %> 
+</body>
 </html>

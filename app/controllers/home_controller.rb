@@ -8,5 +8,9 @@ class HomeController < ApplicationController
       @posts = Post.all
       #TODO(Timifasubaa): make it search the tag strings in Post for the search item.
     end
+    @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
+      marker.lat post.latitude
+      marker.lng post.longitude
+    end
   end
 end
