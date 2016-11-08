@@ -69,5 +69,9 @@ group :production do
   #Use PostgreSQL for production, because Heroku does not support SQLite
   gem 'pg'
   gem 'rails_12factor'
+
+  #stuff heroku doesn't install by itself(?)
+  gem 'carrierwave'
+  gem 'mini_magick'
 end
 
