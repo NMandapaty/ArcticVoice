@@ -2,12 +2,9 @@
 This portal allows researchers and inhabitants of the Arctic share information about the changes in the Arctic.
 
 Version Information:
-
-
 Rake: 11.3  
 Ruby: 2.2  
 Rails: 4.2.7  
-
 
 ###Pivotal Tracker Project
 https://www.pivotaltracker.com/n/projects/1887921

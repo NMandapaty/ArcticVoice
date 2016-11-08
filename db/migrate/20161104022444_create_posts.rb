@@ -2,12 +2,11 @@ class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
       t.string :title
-      t.text :description
-      t.string :post_url
+      t.text :body
       t.string :location
-      t.string :tags
+      t.string :author
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

@@ -1,3 +1,2 @@
-class Post < ApplicationRecord
-	acts_as_commentable
+class Post < ActiveRecord::Base
 end
