@@ -21,6 +21,17 @@
                 title: 'Hello World!'
             });
         }
+        $(document).ready(function () {
+          $( ".show-comments" ).click(function() {
+            if ($("#comments-" + this.id)){
+              $("#comments-" + this.id).toggle(function() {
+                $("#comments-" + this.id).hide();
+              }, function() {
+                $("#comments-" + this.id).show();
+              });
+            }
+          });
+        });
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFVlMvTZLC8tadlYb1IQ9VDjQrW5v1a5Y&callback=initMap">
@@ -28,21 +39,28 @@
     </head>
     
     <body>
-        <a href="/users/sign_in" style="float:right;">Sign in</a>
-        Arctic Voice
+        <a href="/users/sign_in" class="btn btn-success" style="float:right; margin-right: 10px">Sign in</a>
+        <h1 style="margin-left: 20px;"> Arctic Voice </h1>
         <form action="" method="GET" >
-            <input type="text" name="search">
-            <input type="submit">
+            <input type="text" placeholder="Search for a community, region, or research topic..."name="search" style="margin-left: 20px; width:350px;">
+            <input class="btn btn-primary" type="submit">
        </form>
         <div id="map">
             
         </div>
         <% @posts.each do |post| %>
-            <%= post.title %>
-            <%= post.body %>
-            <%= post.location %>
-            <%= post.created_at %>
-            <%= post.updated_at %>
+            <div class="container" style="background-color: #fafafa;"> 
+              <h3> <%= post.title %> </h3>
+              <div> <%= post.body %> </div>
+              <div> <%= post.location %> </div>
+              <div> <b>Created at:</b> <%= post.created_at %> </div>
+              <div> <b>Updated at:</b> <%= post.updated_at %> </div>
+              <div> <b>Tags:</b> <%= post.tags %> </div>
+              <div id="<%= post.id %>" class="show-comments"> <% if post.comments %> <%= post.comments.length %> <% if post.comments.length == 1 %> comment <% else %> comments <% end %> <% else %> 0 comments <% end %> </div>
+              <% if post.comments.length != 0 %> <div id="comments-<%= post.id %>" style="display:none;"> showing comments
+              </div> <% end %>
+            </div>
+            <br>
         <% end %> 
     </body>
 </html>
