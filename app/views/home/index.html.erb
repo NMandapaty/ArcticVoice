@@ -39,7 +39,15 @@
     </head>
     
     <body>
-        <a href="/users/sign_in" class="btn btn-success" style="float:right; margin-right: 10px">Sign in</a>
+      <div style="float:right; margin-right: 10px">
+        <% if user_signed_in? %>
+            <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class=>"btn btn-success") %>        
+        <% else %>
+            <a href="/users/sign_in" class="btn btn-success">Sign in</a>
+            <a href="/users/sign_up" class="btn btn-success">Sign up</a>
+        <% end %>
+      </div>
+        
         <h1 style="margin-left: 20px;"> Arctic Voice </h1>
         <form action="" method="GET" >
             <input type="text" placeholder="Search for a community, region, or research topic..."name="search" style="margin-left: 20px; width:350px;">
