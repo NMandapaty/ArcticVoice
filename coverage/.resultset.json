@@ -1,0 +1,169 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/eeshanagarwal/cs169/ArcticVoice/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/app/helpers/home_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/app/helpers/posts_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/app/controllers/home_controller.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/spec/controllers/posts_controller_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/app/controllers/posts_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/spec/helpers/home_helper_spec.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/spec/helpers/posts_helper_spec.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/spec/models/post_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/app/models/post.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/spec/models/user_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/eeshanagarwal/cs169/ArcticVoice/spec/views/home/index.html.erb_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1478656547
+  }
+}
