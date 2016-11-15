@@ -53,4 +53,12 @@ class PostsController < ApplicationController
   	def find_post
     	@post = Post.find(params[:id])
   	end
+
+  	def search_posts
+  		term = params[:search_string]
+  		# Search posts matching tags, title, location, or author.
+  		@posts = Post.where('tags LIKE :term OR title LIKE :term OR location LIKE :term OR author LIKE :term', term: "%#{term}%")
+  		puts @posts
+  		render :index
+  	end
 end

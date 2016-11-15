@@ -41,34 +41,39 @@
     <body>
       <div style="float:right; margin-right: 10px">
         <% if user_signed_in? %>
+            <a href="/posts/new" class="btn btn-info">New Post</a>
             <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class=>"btn btn-success") %>        
         <% else %>
-            <a href="/users/sign_in" class="btn btn-success">Sign in</a>
+            <a href="/users/sign_in" class="btn btn-info">Sign in</a>
             <a href="/users/sign_up" class="btn btn-success">Sign up</a>
         <% end %>
       </div>
         
         <h1 style="margin-left: 20px;"> Arctic Voice </h1>
-        <form action="" method="GET" >
-            <input type="text" placeholder="Search for a community, region, or research topic..."name="search" style="margin-left: 20px; width:350px;">
-            <input class="btn btn-primary" type="submit">
-       </form>
-        <div id="map">
-            
+       <div class="row">
+        <div class="col-md-6">
+          <div id="map"> </div>
         </div>
-        <% @posts.each do |post| %>
-            <div class="container" style="background-color: #fafafa;"> 
-              <h3> <%= post.title %> </h3>
-              <div> <%= post.body %> </div>
-              <div> <%= post.location %> </div>
-              <div> <b>Created at:</b> <%= post.created_at %> </div>
-              <div> <b>Updated at:</b> <%= post.updated_at %> </div>
-              <div> <b>Tags:</b> <%= post.tags %> </div>
-              <div id="<%= post.id %>" class="show-comments"> <% if post.comments %> <%= post.comments.length %> <% if post.comments.length == 1 %> comment <% else %> comments <% end %> <% else %> 0 comments <% end %> </div>
-              <% if post.comments.length != 0 %> <div id="comments-<%= post.id %>" style="display:none;"> showing comments
-              </div> <% end %>
-            </div>
-            <br>
-        <% end %> 
+        <div class="col-md-6">
+          <%= form_tag({:controller => "posts", :action => "search_posts"}, :method => "get") do %>
+            <%= text_field_tag(:search_string, "", :style => "margin-left: 20px; width:350px;", :placeholder => "Search for a community, region, or research topic...") %>
+            <%= submit_tag "Search", :class => "btn btn-primary" %>
+          <% end %>
+          <% @posts.each do |post| %>
+              <div class="container" style="background-color: #fafafa; width: 95%;"> 
+                <h3> <%= post.title %> </h3>
+                <div> <%= post.body %> </div>
+                <div> <%= post.location %> </div>
+                <div> <b>Created at:</b> <%= post.created_at %> </div>
+                <div> <b>Updated at:</b> <%= post.updated_at %> </div>
+                <div> <b>Tags:</b> <%= post.tags %> </div>
+                <div id="<%= post.id %>" class="show-comments"> <% if post.comments %> <%= post.comments.length %> <% if post.comments.length == 1 %> comment <% else %> comments <% end %> <% else %> 0 comments <% end %> </div>
+                <% if post.comments.length != 0 %> <div id="comments-<%= post.id %>" style="display:none;"> showing comments
+                </div> <% end %>
+              </div>
+              <br>
+          <% end %> 
+        </div>
+       </div>
     </body>
 </html>
