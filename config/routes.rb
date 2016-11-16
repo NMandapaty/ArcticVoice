@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :posts
+
+  post 'comments' => 'comments#create', as: "create_comment"
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
