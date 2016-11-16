@@ -7,20 +7,6 @@
   }
   </style>
     <script>
-    
-        function initMap() {
-            var myLatLng = {lat: 72.792081, lng: -38.714440}; //greenland
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 4,
-              center: myLatLng
-            });
-
-            var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: 'Hello World!'
-            });
-        }
         $(document).ready(function () {
           $( ".show-comments" ).click(function() {
             if ($("#comments-" + this.id)){
@@ -33,6 +19,7 @@
           });
         });
     </script>
+    <%= javascript_include_tag('javascripts/map.js') %>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFVlMvTZLC8tadlYb1IQ9VDjQrW5v1a5Y&callback=initMap">
     </script>
