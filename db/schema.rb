@@ -60,7 +60,8 @@ ActiveRecord::Schema.define(version: 20161104031436) do
     t.string   "name",                   default: "",    null: false
     t.boolean  "is_researcher",          default: false, null: false
     t.string   "phone"
-    t.string   "location"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"

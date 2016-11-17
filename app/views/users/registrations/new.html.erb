@@ -24,8 +24,10 @@
   </div>
 
   <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.hidden_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :longitude %>
   </div>
 
   <div class="field">
@@ -45,5 +47,12 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+
+<%= javascript_include_tag('location.js') %>
+<script>
+$(document).ready(function() {
+  locationInit('user_latitude', 'user_longitude');
+})
+</script>
 
 <%= render "users/shared/links" %>
