@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   get 'home/index'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
   devise_scope :user do
     get '/users/sign_in' => "devise/sessions#new", :as => :login
