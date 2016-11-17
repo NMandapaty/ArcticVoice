@@ -9,14 +9,16 @@
     <script>
         $(document).ready(function () {
           $( ".show-comments" ).click(function() {
-            if ($("#comments-" + this.id)){
-              $("#comments-" + this.id).toggle(function() {
-                $("#comments-" + this.id).hide();
-              }, function() {
-                $("#comments-" + this.id).show();
-              });
+            var post_id = this.id;
+            if ($("#comments-" + post_id + ":visible").length){
+              $("#comments-" + post_id).hide();
+              $("#action-" + post_id).html('view comments');
+            } else{
+              $("#comments-" + post_id).show();
+              $("#action-" + post_id).html('hide comments');
             }
           });
+
         });
     </script>
     <%= javascript_include_tag('javascripts/map.js') %>
@@ -47,20 +49,41 @@
             <%= submit_tag "Search", :class => "btn btn-primary" %>
           <% end %>
           <% @posts.each do |post| %>
-              <div class="container" style="background-color: #fafafa; width: 95%;"> 
-                <h3> <%= post.title %> </h3>
-                <div> <%= post.body %> </div>
-                <div> <%= post.location %> </div>
-                <div> <b>Created at:</b> <%= post.created_at %> </div>
-                <div> <b>Updated at:</b> <%= post.updated_at %> </div>
-                <div> <b>Tags:</b> <%= post.tags %> </div>
-                <div id="<%= post.id %>" class="show-comments"> <% if post.comments %> <%= post.comments.length %> <% if post.comments.length == 1 %> comment <% else %> comments <% end %> <% else %> 0 comments <% end %> </div>
-                <% if post.comments.length != 0 %> <div id="comments-<%= post.id %>" style="display:none;"> showing comments
-                </div> <% end %>
-              </div>
-              <br>
-          <% end %> 
-        </div>
-       </div>
+            <div class="container" style="background-color: #fafafa;"> 
+              <h3> <%= post.title %> </h3>
+              <div> <%= post.body %> </div>
+              <div> <%= post.location %> </div>
+              <div> <b>Created at:</b> <%= post.created_at %> </div>
+              <div> <b>Updated at:</b> <%= post.updated_at %> </div>
+              <div> <b>Tags:</b> <%= post.tags %> </div>
+              <% if post.comments.length != 0 %>
+                <div id="<%= post.id %>" class="show-comments" style="color: blue;cursor: pointer;"> 
+                <span id="action-<%= post.id %>"> view comments </span> 
+                <% if post.comments.length == 1 %> (1 comment) <% else %> (<%= post.comments.length %> comments) <% end %>
+                </div>
+                <br>
+                <div id="comments-<%= post.id %>" style="display:none;">
+                  <div class="comment-section">
+                    <%= form_tag create_comment_path, method: "post" do %>
+                      <%= hidden_field_tag "id", post.id %>
+                        <%= text_field_tag(:title, "", :placeholder => "Comment Title (optional)", :style => "width:175px;") %>
+                        <%= text_area_tag(:comment,"", :style => "display: block;") %>
+                        <%= submit_tag "Submit" %>
+                      <% end %>
+                  </div>
+                  <div class="comment-list-<%= post.id %>">
+                    <% post.comments.each do |comment| %>
+                      <h5> <%= comment.title %> </h5>
+                      <%= comment.comment %> <br>
+                        <% if comment.user %> <%= comment.user.name %> <% end %> <br> <br>
+                      <% end %>
+                  </div>
+                </div> 
+              <% else %>
+              (0 comments)
+              <% end %>
+            </div>
+            <br>
+        <% end %> 
     </body>
 </html>
