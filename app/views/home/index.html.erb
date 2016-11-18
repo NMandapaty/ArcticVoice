@@ -82,7 +82,17 @@
                   </div>
                 </div> 
               <% else %>
-              (0 comments)
+              
+              <div id="comments-<%= post.id %>"> (0 comments)
+                <div class="comment-section">
+                  <%= form_tag create_comment_path, method: "post" do %>
+                    <%= hidden_field_tag "id", post.id %>
+                      <%= text_field_tag(:title, "", :placeholder => "Comment Title (optional)", :style => "width:175px;") %>
+                      <%= text_area_tag(:comment,"", :style => "display: block;") %>
+                      <%= submit_tag "Submit" %>
+                    <% end %>
+                </div>
+              </div>
               <% end %>
             </div>
             <br>
