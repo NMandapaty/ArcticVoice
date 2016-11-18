@@ -1,0 +1,55 @@
+<div class="container" style="text-align:center; background-color: #F0F8FF;">
+	<h2> <%= @user.name %> </h2>
+	<p> <%= @user.email %> </p>
+	<p> Location: <%= @user.location %> </p>
+	<p> Phone: <%= @user.phone %> </p>
+</div>
+<div class="container"> <h3> My posts: </h3> </div>
+<% @user_posts.each do |post| %>
+	<div class="container" style="background-color: #fafafa;"> 
+	  <h3> <%= post.title %> </h3>
+	  <div> <%= raw(post.body) %> </div>
+	  <div> <%= post.location %> </div>
+	  <div> <b>Created at:</b> <%= post.created_at %> </div>
+	  <div> <b>Updated at:</b> <%= post.updated_at %> </div>
+	  <div> <b>Tags:</b> <%= post.tags %> </div>
+	  <% if post.comments.length != 0 %>
+	    <div id="<%= post.id %>" class="show-comments" style="color: blue;cursor: pointer;"> 
+	    <span id="action-<%= post.id %>"> view comments </span> 
+	    <% if post.comments.length == 1 %> (1 comment) <% else %> (<%= post.comments.length %> comments) <% end %>
+	    </div>
+	    <br>
+	    <div id="comments-<%= post.id %>" style="display:none;">
+	      <div class="comment-section">
+	        <%= form_tag create_comment_path, method: "post" do %>
+	          <%= hidden_field_tag "id", post.id %>
+	            <%= text_field_tag(:title, "", :placeholder => "Comment Title (optional)", :style => "width:175px;") %>
+	            <%= text_area_tag(:comment,"", :style => "display: block;") %>
+	            <%= submit_tag "Submit" %>
+	          <% end %>
+	      </div>
+	      <div class="comment-list-<%= post.id %>">
+	        <% post.comments.each do |comment| %>
+	          <h5> <%= comment.title %> </h5>
+	          <%= comment.comment %> <br>
+	            <% if comment.user %> <%= comment.user.name %> <% end %> <br> <br>
+	          <% end %>
+	      </div>
+	    </div> 
+	  <% else %>
+	  
+	  <div id="comments-<%= post.id %>"> (0 comments)
+	    <div class="comment-section">
+	      <%= form_tag create_comment_path, method: "post" do %>
+	        <%= hidden_field_tag "id", post.id %>
+	          <%= text_field_tag(:title, "", :placeholder => "Comment Title (optional)", :style => "width:175px;") %>
+	          <%= text_area_tag(:comment,"", :style => "display: block;") %>
+	          <%= submit_tag "Submit" %>
+	        <% end %>
+	    </div>
+	  </div>
+	  <% end %>
+	</div>
+	<br>
+<% end %>
+

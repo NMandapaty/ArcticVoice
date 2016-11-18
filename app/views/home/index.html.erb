@@ -30,6 +30,7 @@
     <body>
       <div style="float:right; margin-right: 10px">
         <% if user_signed_in? %>
+            <%= link_to('My Profile', current_user, :class=>"btn btn-warning") %>
             <a href="/posts/new" class="btn btn-info">New Post</a>
             <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class=>"btn btn-success") %>        
         <% else %>
@@ -51,7 +52,7 @@
           <% @posts.each do |post| %>
             <div class="container" style="background-color: #fafafa;"> 
               <h3> <%= post.title %> </h3>
-              <div> <%= post.body %> </div>
+              <div> <%= raw(post.body) %> </div>
               <div> <%= post.location %> </div>
               <div> <b>Created at:</b> <%= post.created_at %> </div>
               <div> <b>Updated at:</b> <%= post.updated_at %> </div>
