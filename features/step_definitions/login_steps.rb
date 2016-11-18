@@ -17,6 +17,7 @@ def create_unconfirmed_user
 end
 
 def create_user
+  FactoryGirl.find_definitions
   create_visitor
   delete_user
   @user = FactoryGirl.create(:user, @visitor)
