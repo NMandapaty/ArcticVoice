@@ -109,6 +109,8 @@ GEM
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_girl (4.7.0)
+      activesupport (>= 3.0.0)
     ffi (1.9.14)
     geocoder (1.4.0)
     gherkin (4.0.0)
@@ -268,6 +270,7 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   devise
+  factory_girl
   geocoder
   gmaps4rails
   jbuilder (~> 2.0)
