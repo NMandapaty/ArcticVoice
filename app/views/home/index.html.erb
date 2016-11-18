@@ -30,6 +30,7 @@
     <body>
       <div style="float:right; margin-right: 10px">
         <% if user_signed_in? %>
+            <%= link_to('My Profile', current_user, :class=>"btn btn-warning") %>
             <a href="/posts/new" class="btn btn-info">New Post</a>
             <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class=>"btn btn-success") %>        
         <% else %>
@@ -51,10 +52,10 @@
           <% @posts.each do |post| %>
             <div class="container" style="background-color: #fafafa;"> 
               <h3> <%= post.title %> </h3>
-              <div> <%= post.body %> </div>
+              <div> <%= raw(post.body) %> </div>
               <div> <%= post.location %> </div>
               <div> <b>Created at:</b> <%= post.created_at %> </div>
-              <div> <b>Updated at:</b> <%= post.updated_at %> </div>
+              <div> <% if post.user %> <b>Author: </b> <%= link_to post.user.name, post.user %> <% end %> </div>
               <div> <b>Tags:</b> <%= post.tags %> </div>
               <% if post.comments.length != 0 %>
                 <div id="<%= post.id %>" class="show-comments" style="color: blue;cursor: pointer;"> 
@@ -75,7 +76,7 @@
                     <% post.comments.each do |comment| %>
                       <h5> <%= comment.title %> </h5>
                       <%= comment.comment %> <br>
-                        <% if comment.user %> <%= comment.user.name %> <% end %> <br> <br>
+                        <% if comment.user %> <b> By: </b> <%= link_to comment.user.name, comment.user %> <% end %> <br> <br>
                       <% end %>
                   </div>
                 </div> 

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'home/index'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
-
+  resources :users, only: [:show]
+  
   devise_scope :user do
     get '/users/sign_in' => "devise/sessions#new", :as => :login
   end
