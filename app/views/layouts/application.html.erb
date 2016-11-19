@@ -1,10 +1,44 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
 <head>
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="Mu9iDj4BWcP4odTuC9Bmd_gv83bc7MCGRgynT5N5p0g" />
   <title>ArcticVoice</title>
+  <meta name="generator" content="Bootply" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "bootstrap.min.css" %>
+  <%= stylesheet_link_tag "styles.css" %>
+  <%= stylesheet_link_tag "stolen.css" %>
+  <script>
+  $(document).ready(function () {
+    $( ".show-comments" ).click(function() {
+      var post_id = this.id;
+      if ($("#comments-" + post_id + ":visible").length){
+        $("#comments-" + post_id).hide();
+        $("#action-" + post_id).html('view comments');
+      } else{
+        $("#comments-" + post_id).show();
+        $("#action-" + post_id).html('hide comments');
+      }
+    });
+
+  });
+  </script>
+
+  <%= javascript_include_tag('//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js') %>
+  <%= javascript_include_tag('bootstrap.min.js') %>
+
+  <%= javascript_include_tag('https://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed&libraries=places&key=AIzaSyDCXxias-6mCmt3Q02JwxUeKQEJJQtMEb8') %>
+  <%= javascript_include_tag('map.js') %>
+
+
 </head>
 <body>
 
