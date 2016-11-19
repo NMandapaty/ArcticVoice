@@ -11,13 +11,13 @@
     height: 70px;
     left: 0px;
     line-height: 16px;
-    width: 100%
+    width: 100%;
     outline-color: rgb(110, 110, 110);
     padding-left: 25px;
     padding-right: 25px;
     position: fixed;
     right: 0px;
-    border: ;
+    border: 0px;
 	top: 0;
     position: fixed !important;
 }/*#DIV_1*/
@@ -114,7 +114,7 @@
     text-size-adjust: 100%;
     top: 0px;
     width: 350px;
-    border: ;
+    border: 0px;
     border-left: 1px solid rgb(220, 224, 224);
     border-width: 0px 0px 0px 1px;
     border-color: rgb(110, 110, 110) rgb(110, 110, 110) rgb(110, 110, 110) rgb(220, 224, 224);
@@ -203,7 +203,7 @@
     clear: none;
     clip: auto;
     color: rgb(72, 72, 72);
-    content: ;
+    content: 0px;
     cursor: auto;
     direction: ltr;
     display: table;
@@ -433,7 +433,6 @@
     font: normal normal normal normal 14px / 61px Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
     list-style: disc outside none;
     margin: 0px;
-    marker: ;
     outline: rgb(72, 72, 72) none 0px;
     overflow: visible;
     padding: 0px;
