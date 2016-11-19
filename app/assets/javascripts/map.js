@@ -1,6 +1,6 @@
 function createMap(myLatLng, isDefaultLocation){
   var zoom = isDefaultLocation ? 4 : 12; // More precise if user sharing location.
-  var map = new google.maps.Map(document.getElementById('map'), {
+  var map = new google.maps.Map(document.getElementById('map-canvas'), {
     zoom: zoom,
     center: myLatLng
   });
