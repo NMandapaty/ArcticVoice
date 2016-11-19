@@ -25,3 +25,5 @@ function initMap() {
       createMap({lat: 72.792081, lng: -38.714440}, true); //greenland
     }
 }
+
+initMap();
