@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20161116215714) do
     t.text     "body"
     t.string   "location"
     t.string   "author"
-    t.integer  "user_id"
     t.string   "tags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

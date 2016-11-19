@@ -56,7 +56,7 @@
         <% if user_signed_in? %>
         <ul id="UL_27">
           <li id="LI_28">
-            <%= link_to('My Profile', current_user, :class=>"btn btn-warning") %>
+            <%= link_to('My Profile', current_user, :id=>"A_29") %>
           </li>
 
           <li id="LI_28">
@@ -117,7 +117,7 @@
                 <%= comment.comment %> <br>
                 <% if comment.user %> <%= comment.user.name %> <% end %> <br> <br>
                 <% end %>
-              </div>
+              </div>1
             </div> 
             <% else %>
             (0 comments)
