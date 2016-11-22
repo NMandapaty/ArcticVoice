@@ -1,124 +1,134 @@
-<div id="DIV_1">
-  <div id="DIV_2">
-    <a href="/" title="ArcticVoice" id="A_3"> <%= image_tag "logo-rectangle.png", :id => "IMG_5" %>  </a>
-  </div>
-  <%= form_tag({:controller => "posts", :action => "search_posts"}, :method => "get", :id=>"FORM_6") do %>
-  <div class="search-bar" data-reactid=".0.0" id="SearchIt">
-    <i class="header-icon icon-search-alt-gray search-icon" aria-hidden="true" data-reactid=".0.0.0" id="I_2"></i>
-    <label class="screen-reader-only" for="header-search-form" aria-hidden="true" data-reactid=".0.0.1" id="LABEL_3">Search</label>
-    <%= text_field_tag(:search_string, "", :type=>"text", :id=>"INPUT_4", :class=>"location", :placeholder => "Search for a community, region, or research topic") %>
-    <div id="DIV_5" data-reactid=".0.0.3" style="top: 6px;">
-      <svg viewBox="0 0 24 24" style="fill:currentColor;height:1em;width:1em;display:block;" data-reactid=".0.0.3.0" id="svg_6">
-        <path d="M23.53 22.47l-6.807-6.808A9.455 9.455 0 0 0 19 9.5 9.5 9.5 0 1 0 9.5 19c2.353 0 4.502-.86 6.162-2.277l6.808 6.807a.75.75 0 0 0 1.06-1.06zM9.5 17.5a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" data-reactid=".0.0.3.0.0" id="path_7">
-        </path>
-      </svg>
+  <div id="DIV_1">
+    <div id="DIV_2">
+      <a href="/" title="ArcticVoice" id="A_3"> <%= image_tag "logo-rectangle.png", :id => "IMG_5" %>  </a>
     </div>
+    <%= form_tag({:controller => "posts", :action => "search_posts"}, :method => "get", :id=>"FORM_6") do %>
+    <div class="search-bar" data-reactid=".0.0" id="SearchIt">
+      <i class="header-icon icon-search-alt-gray search-icon" aria-hidden="true" data-reactid=".0.0.0" id="I_2"></i>
+      <label class="screen-reader-only" for="header-search-form" aria-hidden="true" data-reactid=".0.0.1" id="LABEL_3">Search</label>
+      <%= text_field_tag(:search_string, "", :type=>"text", :id=>"INPUT_4", :class=>"location", :placeholder => "Search for a community, region, or research topic") %>
+      <div id="DIV_5" data-reactid=".0.0.3" style="top: 6px;">
+        <svg viewBox="0 0 24 24" style="fill:currentColor;height:1em;width:1em;display:block;" data-reactid=".0.0.3.0" id="svg_6">
+          <path d="M23.53 22.47l-6.807-6.808A9.455 9.455 0 0 0 19 9.5 9.5 9.5 0 1 0 9.5 19c2.353 0 4.502-.86 6.162-2.277l6.808 6.807a.75.75 0 0 0 1.06-1.06zM9.5 17.5a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" data-reactid=".0.0.3.0.0" id="path_7">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <% end %>
+
+    <% if user_signed_in? %>
+    <ul id="UL_27">
+      <li id="LI_28">
+        <%= link_to('My Profile', current_user, :id=>"A_29") %>
+      </li>
+
+      <li id="LI_28">
+        <a href="/posts/new" id="A_29"> New Post </a>
+      </li>
+      <li id="LI_28">
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete, :id=>"A_29")%>
+      </li>
+    </ul>
+    <% else %>
+    <ul id="UL_27">
+      <li id="LI_28">
+        <a href="/users/sign_up" id="A_29"> Sign Up </a>
+      </li>
+      <li id="LI_28">
+        <a href="/users/sign_in" id="A_29"> Log In </a>
+      </li>
+    </ul>
+    <% end %>
   </div>
-  <% end %>
-
-  <% if user_signed_in? %>
-  <ul id="UL_27">
-    <li id="LI_28">
-      <%= link_to('My Profile', current_user, :id=>"A_29") %>
-    </li>
-
-    <li id="LI_28">
-      <a href="/posts/new" id="A_29"> New Post </a>
-    </li>
-    <li id="LI_28">
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete, :id=>"A_29")%>
-    </li>
-  </ul>
-  <% else %>
-  <ul id="UL_27">
-    <li id="LI_28">
-      <a href="/users/sign_up" id="A_29"> Sign Up </a>
-    </li>
-    <li id="LI_28">
-      <a href="/users/sign_in" id="A_29"> Log In </a>
-    </li>
-  </ul>
-  <% end %>
-</div>
 
 
-<div id="map-canvas"></div>
-<div class="container-fluid" id="main"  style="overflow-y: hidden;">
-  <div class="row">
+  <div id="map-canvas"></div>
+  <div class="container-fluid" id="main"  style="overflow-y: hidden; padding-top: 20px; background-color: #f3f2f2;">
+    <div class="row">
 
-      <h2>Latest Posts</h2>
+        <h2></h2>
+        <% @posts.each do |post| %>
 
-      <% @posts.each do |post| %>
-      <div class="panel panel-default">
-        <div class="panel-heading"><a href="/posts/<%= post.id %>" target="_blank" rel="noopener noreferrer"> <%= post.title %> </a></div>
-      </div>
-      <div> <%= post.body %> </div>
-      <div> <%= post.location %> </div>
-      <div> <b>Created at:</b> <%= post.created_at %> </div>
-      <div> <% if post.user %> <b>Author: </b> <%= link_to post.user.name, post.user %> <% end %> </div>
-      <div> <b>Tags:</b> <%= post.tags %> </div>
-      <% if post.comments.length != 0 %>
-      <div id="<%= post.id %>" class="show-comments" style="color: blue;cursor: pointer;"> 
-        <span id="action-<%= post.id %>"> view comments </span> 
-        <% if post.comments.length == 1 %> (1 comment) <% else %> (<%= post.comments.length %> comments) <% end %>
-      </div>
-      <br>
-      <div id="comments-<%= post.id %>" style="display:none;">
-        <div class="comment-section">
-          <%= form_tag create_comment_path, method: "post" do %>
-          <%= hidden_field_tag "id", post.id %>
-          <%= text_field_tag(:title, "", :placeholder => "Comment Title (optional)", :style => "width:175px;") %>
-          <%= text_area_tag(:comment,"", :style => "display: block;") %>
-          <%= submit_tag "Submit" %>
-          <% end %>
+          <div class="col s12 m6">
+              <div class="card white-grey">
+                <div class="card-content black-text">
+                  <a href="/posts/<%= post.id %>" target="_blank" rel="noopener noreferrer" class="card-title"> <%= post.title %> </a>
+                  <p><%= post.body %></p>
+                  <p> <%= post.location %> </p>
+                </div>
+                <div class="card-action">
+                  <div> <% if post.user %> <b>Author:</b> <%= link_to post.user.name, post.user %> <% end %> </div>
+                  <% if post.tags %> <% post.tags.split(',').each do |tag| %>
+                  <div class="chip"> <%= tag %> </div>
+                  <% end %> <% end %> 
+                </div>
+                <div class="card-action">
+                  <div id="<%= post.id %>" class="show-comments" style="color: blue;cursor: pointer;"> 
+                    <a id="action-<%= post.id %>" class="waves-effect waves-light btn"><i style="font-size: 1.6rem;" class="small material-icons left ">comment</i> View Comments</a>
+                  </div>
+
+                  <% if post.comments.length != 0 %>
+                    <div id="comments-<%= post.id %>" style="display:none;">
+                      <div class="comment-list-<%= post.id %>">
+                        <% post.comments.each do |comment| %>
+                        <h5> <%= comment.title %> </h5>
+                        <%= comment.comment %> <br>
+                         <% if comment.user %> <b> By: </b> <%= link_to comment.user.name, comment.user %> <% end %> <br> <br>
+                        <% end %>
+                      </div>
+                      <div class="comment-section">
+                        <%= form_tag create_comment_path, method: "post" do %>
+                          <%= hidden_field_tag "id", post.id %>
+                            <%= text_field_tag(:title, "", :placeholder => "Comment Title (optional)", :style => "width:175px;") %>
+                            <%= text_area_tag(:comment,"", :placeholder => "Add a comment...") %>
+                            <button class="btn waves-effect waves-light" type="submit" name="commit">Submit
+                            <i class="material-icons right">send</i>
+                            </button>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div id="comments-<%= post.id %>" style="display: none;" > (0 comments)
+                      <div class="comment-section">
+                        <%= form_tag create_comment_path, method: "post" do %>
+                          <%= hidden_field_tag "id", post.id %>
+                            <%= text_field_tag(:title, "", :placeholder => "Comment Title (optional)", :style => "width:175px;") %>
+                            <%= text_area_tag(:comment,"", :placeholder => "Add a comment...") %>
+                            <button class="btn waves-effect waves-light" type="submit" name="commit">Submit
+                            <i class="material-icons right">send</i>
+                            </button>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+              </div>
+          </div>
         </div>
-        <div class="comment-list-<%= post.id %>">
-          <% post.comments.each do |comment| %>
-          <h5> <%= comment.title %> </h5>
-          <%= comment.comment %> <br>
-           <% if comment.user %> <b> By: </b> <%= link_to comment.user.name, comment.user %> <% end %> <br> <br>
-          <% end %>
-        </div>1
-      </div> 
-      <% else %>
-      <div id="comments-<%= post.id %>"> (0 comments)
-        <div class="comment-section">
-          <%= form_tag create_comment_path, method: "post" do %>
-            <%= hidden_field_tag "id", post.id %>
-              <%= text_field_tag(:title, "", :placeholder => "Comment Title (optional)", :style => "width:175px;") %>
-              <%= text_area_tag(:comment,"", :style => "display: block;") %>
-              <%= submit_tag "Submit" %>
-          <% end %>
-      </div>
-      <% end %>
-    <br>
-    <% end %>   
-
+      <% end %> 
+    </div>
+    <div class="col-xs-4"></div>
   </div>
-  <div class="col-xs-4"></div>
+    
+  <script>
+      markers = "<%=raw @hash.to_json %>";
+      $(document).load(function(){
+        initialize();
+      });
+  </script>
 
-</div>
-  
-<script>
-    markers = "<%=raw @hash.to_json %>";
-    $(document).load(function(){
-      initialize();
+
+  <!-- Scripts -->
+  <script> 
+    $(document).ready(function () {
+      $( ".show-comments" ).click(function() {
+        var post_id = this.id;
+        if ($("#comments-" + post_id + ":visible").length){
+          $("#comments-" + post_id).hide();
+          $("#action-" + post_id).html('<i style="font-size: 1.6rem;" class="small material-icons left ">comment</i> View Comments');
+        } else{
+          $("#comments-" + post_id).show();
+          $("#action-" + post_id).html('<i style="font-size: 1.6rem;" class="small material-icons left ">comment</i> Hide Comments');
+        }
+      });
     });
-</script>
-
-
-<!-- Scripts -->
-<script> 
-  $(document).ready(function () {
-    $( ".show-comments" ).click(function() {
-      var post_id = this.id;
-      if ($("#comments-" + post_id + ":visible").length){
-        $("#comments-" + post_id).hide();
-        $("#action-" + post_id).html('view comments');
-      } else{
-        $("#comments-" + post_id).show();
-        $("#action-" + post_id).html('hide comments');
-      }
-    });
-  });
-</script>
+  </script>

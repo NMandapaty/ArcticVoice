@@ -17,6 +17,10 @@ body{
   	padding-top:50px; /*padding for navbar*/
 }
 
+
+.card-title {
+  color: black !important;
+}
 .navbar-custom .icon-bar {
 	background-color:#fff;
 }
