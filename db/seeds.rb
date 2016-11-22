@@ -12,6 +12,7 @@ post2 = Post.create(:title => "Post 2", :body => "Post 2 body", :location => "Sw
 Post.create(:title => "Post 3", :body => "Post 3 body", :location => "Russia", :tags => "post3,russia,reddit", :latitude => 79.126513,  :longitude => -59.278820)
 Post.create(:title => "Post 4", :body => "Post 4 body", :location => "Greenland", :tags => "post4,greenland,9gag", :latitude => 83.311480,  :longitude => -36.870883)
 Post.create(:title => "Post 5", :body => "Post 5 body", :location => "Iceland", :tags => "post5,iceland,gmail", :latitude => 71.616353, :longitude => -75.015414)
+Post.create(:title => "Post 6", :body => "North Atlantic Ocean", :location => "North Atlantic Ocean", :tags => "post5,iceland,gmail", :latitude => 40.332549,  :longitude => -40.650180)
 
 # Comment Seeds
 # post1 has 2 comments
