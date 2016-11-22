@@ -43,13 +43,14 @@ body{
 
 #main, #main>.row {
 	height:100%;
-    top:69px;
-
+    top:70px;
 }
 
 #main>.row {
+    width: 55%;
     overflow-y:scroll;
-    width: 56%;
+    margin-left: 0px! important;
+    margin-right: 0px !important;
 }
 
 #left {

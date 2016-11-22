@@ -37,7 +37,6 @@ class PostsController < ApplicationController
   	def show
   	end
 
-
   	def destroy
 	    if @post.destroy
 	      flash[:notice] = "Deleted post!"
