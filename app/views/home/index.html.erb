@@ -42,8 +42,6 @@
 </div>
 
 
-
-
 <div id="map-canvas"></div>
 <div class="container-fluid" id="main"  style="overflow-y: hidden;">
   <div class="row">
@@ -57,7 +55,7 @@
       <div> <%= post.body %> </div>
       <div> <%= post.location %> </div>
       <div> <b>Created at:</b> <%= post.created_at %> </div>
-      <div> <b>Updated at:</b> <%= post.updated_at %> </div>
+      <div> <% if post.user %> <b>Author: </b> <%= link_to post.user.name, post.user %> <% end %> </div>
       <div> <b>Tags:</b> <%= post.tags %> </div>
       <% if post.comments.length != 0 %>
       <div id="<%= post.id %>" class="show-comments" style="color: blue;cursor: pointer;"> 
@@ -78,12 +76,20 @@
           <% post.comments.each do |comment| %>
           <h5> <%= comment.title %> </h5>
           <%= comment.comment %> <br>
-          <% if comment.user %> <%= comment.user.name %> <% end %> <br> <br>
+           <% if comment.user %> <b> By: </b> <%= link_to comment.user.name, comment.user %> <% end %> <br> <br>
           <% end %>
         </div>1
       </div> 
       <% else %>
-      (0 comments)
+      <div id="comments-<%= post.id %>"> (0 comments)
+        <div class="comment-section">
+          <%= form_tag create_comment_path, method: "post" do %>
+            <%= hidden_field_tag "id", post.id %>
+              <%= text_field_tag(:title, "", :placeholder => "Comment Title (optional)", :style => "width:175px;") %>
+              <%= text_area_tag(:comment,"", :style => "display: block;") %>
+              <%= submit_tag "Submit" %>
+          <% end %>
+      </div>
       <% end %>
     <br>
     <% end %>   
@@ -92,3 +98,19 @@
   <div class="col-xs-4"></div>
 
 </div>
+
+<!-- Scripts -->
+<script> 
+  $(document).ready(function () {
+    $( ".show-comments" ).click(function() {
+      var post_id = this.id;
+      if ($("#comments-" + post_id + ":visible").length){
+        $("#comments-" + post_id).hide();
+        $("#action-" + post_id).html('view comments');
+      } else{
+        $("#comments-" + post_id).show();
+        $("#action-" + post_id).html('hide comments');
+      }
+    });
+  });
+</script>

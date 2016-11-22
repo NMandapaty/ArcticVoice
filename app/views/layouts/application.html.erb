@@ -16,21 +16,6 @@
   <%= stylesheet_link_tag "bootstrap.min.css" %>
   <%= stylesheet_link_tag "styles.css" %>
   <%= stylesheet_link_tag "stolen.css" %>
-  <script>
-  $(document).ready(function () {
-    $( ".show-comments" ).click(function() {
-      var post_id = this.id;
-      if ($("#comments-" + post_id + ":visible").length){
-        $("#comments-" + post_id).hide();
-        $("#action-" + post_id).html('view comments');
-      } else{
-        $("#comments-" + post_id).show();
-        $("#action-" + post_id).html('hide comments');
-      }
-    });
-
-  });
-  </script>
 
   <%= javascript_include_tag('//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js') %>
   <%= javascript_include_tag('bootstrap.min.js') %>
