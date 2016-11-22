@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
 		if comment.save
 			flash[:notice] = "Comment has been created."
-			redirect_to '/'
+			redirect_to :back
 		else
 			flash[:alert] = "Comment has not been created."
 		end

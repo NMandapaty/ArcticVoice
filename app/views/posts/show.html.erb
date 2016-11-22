@@ -1,5 +1,67 @@
-<div class="col-sm-11 col-xs-12 blog-content">
-  <h2 class="text-center"><%= @post.title %></h2>
-  <h5 class="text-center"><%= @post.created_at.strftime('%b %d, %Y') %></h5>
-  <div><%= raw @post.body %></div>
+<div class="card white-grey container" style="top:50px;">
+    <div class="card-content black-text">
+      <p class="card-title"> <%= @post.title %> </p>
+      <p><%= raw(@post.body) %></p>
+      <p> <%= @post.location %> </p>
+    </div>
+    <div class="card-action">
+      <div> <% if @post.user %> <b>Author:</b> <%= link_to @post.user.name, @post.user %> <% end %> </div>
+      <% if @post.tags %> <% @post.tags.split(',').each do |tag| %>
+      <div class="chip"> <%= tag %> </div>
+      <% end %> <% end %> 
+    </div>
+    <div class="card-action">
+    	<div id="<%= @post.id %>" class="show-comments" style="color: blue;cursor: pointer;"> 
+                    <a id="action-<%= @post.id %>" class="waves-effect waves-light btn"><i style="font-size: 1.6rem;" class="small material-icons left ">comment</i> View Comments</a>
+        </div>
+      <% if @post.comments.length != 0 %>
+        <div id="comments-<%= @post.id %>" style="display: none;">
+          <div class="comment-list-<%= @post.id %>">
+            <% @post.comments.each do |comment| %>
+            <h5> <%= comment.title %> </h5>
+            <%= comment.comment %> <br>
+             <% if comment.user %> <b> By: </b> <%= link_to comment.user.name, comment.user %> <% end %> <br> <br>
+            <% end %>
+          </div>
+          <div class="comment-section">
+            <%= form_tag create_comment_path, method: "@post" do %>
+              <%= hidden_field_tag "id", @post.id %>
+                <%= text_field_tag(:title, "", :placeholder => "Comment Title (optional)", :style => "width:175px;") %>
+                <%= text_area_tag(:comment,"", :placeholder => "Add a comment...") %>
+                <button class="btn waves-effect waves-light" type="submit" name="commit">Submit
+                <i class="material-icons right">send</i>
+                </button>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <div id="comments-<%= @post.id %>" style="display: none;" > (0 comments)
+          <div class="comment-section">
+            <%= form_tag create_comment_path, method: "@post" do %>
+              <%= hidden_field_tag "id", @post.id %>
+                <%= text_field_tag(:title, "", :placeholder => "Comment Title (optional)", :style => "width:175px;") %>
+                <%= text_area_tag(:comment,"", :placeholder => "Add a comment...") %>
+                <button class="btn waves-effect waves-light" type="submit" name="commit">Submit
+                <i class="material-icons right">send</i>
+                </button>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+  </div>
 </div>
+
+<script> 
+    $(document).ready(function () {
+      $( ".show-comments" ).click(function() {
+        var post_id = this.id;
+        if ($("#comments-" + post_id + ":visible").length){
+          $("#comments-" + post_id).hide();
+          $("#action-" + post_id).html('<i style="font-size: 1.6rem;" class="small material-icons left ">comment</i> View Comments');
+        } else{
+          $("#comments-" + post_id).show();
+          $("#action-" + post_id).html('<i style="font-size: 1.6rem;" class="small material-icons left ">comment</i> Hide Comments');
+        }
+      });
+    });
+ </script>

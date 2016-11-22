@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   # Post Search
   get '/posts/search' => 'posts#search_posts'
+  # redirect home
+  get '/posts' => 'home#index'
 
   resources :posts
 
