@@ -5,12 +5,18 @@
       <p><%= raw(post.body) %></p>
       <p> <%= post.location %> </p>
     </div>
+    <% if post.user %> 
     <div class="card-action">
-      <div> <% if post.user %> <b>Author:</b> <%= link_to post.user.name, post.user %> <% end %> </div>
-      <% if post.tags %> <% post.tags.split(',').each do |tag| %>
-      <div class="chip"> <%= tag %> </div>
-      <% end %> <% end %> 
+      <div> <b>Author:</b> <%= link_to post.user.name, post.user %> </div>
     </div>
+    <% end %>
+    <% if post.tags %>
+    <div class="card-action">
+       <% post.tags.split(',').each do |tag| %>
+      <div class="chip"> <%= tag %> </div>
+      <% end %>
+    </div>
+    <% end %> 
     <div class="card-action">
         <div id="<%= post.id %>" class="show-comments" style="color: blue;cursor: pointer;"> 
                     <a id="action-<%= post.id %>" class="waves-effect waves-light btn"><i style="font-size: 1.6rem;" class="small material-icons left ">comment</i> View Comments</a>
