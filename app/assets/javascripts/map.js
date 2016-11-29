@@ -14,10 +14,12 @@ function createMap(myLatLng, isDefaultLocation){
 
 function initMap() {
     if (navigator.geolocation) {
-      success = function(position) { // user location
+      var success = function(position) { // user location
         createMap({lat: position.coords.latitude, lng: position.coords.longitude}, false);
       };
-      error = function() { createMap({lat: 72.792081, lng: -38.714440}, true); } //greenland
+      var error = function() {
+        createMap({lat: 72.792081, lng: -38.714440}, true); //greenland
+      };
 
       navigator.geolocation.getCurrentPosition(success, error);
     }

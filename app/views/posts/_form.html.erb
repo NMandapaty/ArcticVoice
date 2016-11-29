@@ -23,13 +23,25 @@
   </div>
 
   <div class="form-group">
-    <%= f.input :latitude, class: "form-control" %>
+    <%= f.hidden_field :latitude, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.input :longitude, class: "form-control" %>
+    <%= f.hidden_field :longitude, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <div id="map" style="margin-left: 25%; margin-right: 25%; width:50%"> </div>
   </div>
 
   <div class="form-group">
     <%= f.button :submit %>
   </div>
 <% end %>
+
+<script>
+function initMap() {
+  locationInit('post_latitude', 'post_longitude');
+};
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFVlMvTZLC8tadlYb1IQ9VDjQrW5v1a5Y&callback=initMap"></script>

@@ -31,6 +31,10 @@
   </div>
 
   <div class="field">
+    <div id="map" style="margin-left: 25%; margin-right: 25%; width:50%"> </div>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>(Required)
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -50,9 +54,11 @@
 
 <%= javascript_include_tag('location.js') %>
 <script>
-$(document).ready(function() {
+function initMap() {
   locationInit('user_latitude', 'user_longitude');
-})
+};
 </script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFVlMvTZLC8tadlYb1IQ9VDjQrW5v1a5Y&callback=initMap"></script>
 
 <%= render "users/shared/links" %>
