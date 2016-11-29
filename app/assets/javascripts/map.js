@@ -1,29 +1,55 @@
-function createMap(myLatLng, isDefaultLocation){
-  var zoom = isDefaultLocation ? 4 : 12; // More precise if user sharing location.
-  var map = new google.maps.Map(document.getElementById('map-canvas'), {
-    zoom: zoom,
-    center: myLatLng
-  });
+jQuery(function($) {
+    // Asynchronously Load the map API 
+    var script = document.createElement('script');
+    script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyDCXxias-6mCmt3Q02JwxUeKQEJJQtMEb8&sensor=false&callback=setupMarkers";
+    document.body.appendChild(script);
+});
 
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
-  });
+function setupMarkers () {
+    var markers = new Array();
+    $.ajax({
+      url: '/locations.js',
+      method:'GET',
+      success: function(data){
+        markers = $.parseJSON(data);  
+        markers = markers.filter(function(n){ return n["lat"] != undefined }); 
+        initialize(markers);  
+      }
+    });
+
 }
 
-function initMap() {
-    if (navigator.geolocation) {
-      success = function(position) { // user location
-        createMap({lat: position.coords.latitude, lng: position.coords.longitude}, false);
-      };
-      error = function() { createMap({lat: 72.792081, lng: -38.714440}, true); } //greenland
+function initialize(markers) {
+    var map;
+    var bounds = new google.maps.LatLngBounds();
 
-      navigator.geolocation.getCurrentPosition(success, error);
+    // Display a map on the page
+    map = new google.maps.Map(document.getElementById("map-canvas"));    
+    // Info Window Content
+    var infoWindowContent =  new Array();
+    for( i = 0; i < markers.length; i++ ) {
+      infoWindowContent.push(['<div class="info_content">' + "<h3><a href='/posts/" +  markers[i]["id"] + "'" + 'target="_blank" rel="noopener noreferrer">' + markers[i]["marker_title"] + '</a></h3>' + '<p>'+ markers[i]["marker_title"]  + '</p>' + '</div>']);
     }
-    else {
-      createMap({lat: 72.792081, lng: -38.714440}, true); //greenland
+    // Display multiple markers on a map
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
+  
+    // Loop through our array of markers & place each one on the map  
+    for( i = 0; i < markers.length; i++ ) {
+        var position = new google.maps.LatLng(markers[i]["lat"], markers[i]["lng"]);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: markers[i]["marker_title"]
+        });        
+        // Allow each marker to have an info window    
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infoWindow.setContent(infoWindowContent[i][0]);
+                infoWindow.open(map, marker);
+            }
+        })(marker, i));
+        // Automatically center the map fitting all markers on the screen
+        map.fitBounds(bounds);
     }
 }
-
-initMap();

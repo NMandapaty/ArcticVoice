@@ -17,6 +17,15 @@ body{
   	padding-top:50px; /*padding for navbar*/
 }
 
+
+.form-group > iframe {
+    height: auto !important;
+}
+
+
+.card-title {
+  color: black !important;
+}
 .navbar-custom .icon-bar {
 	background-color:#fff;
 }
@@ -43,13 +52,14 @@ body{
 
 #main, #main>.row {
 	height:100%;
-    top:69px;
-
+    top:70px;
 }
 
 #main>.row {
+    width: 55%;
     overflow-y:scroll;
-    width: 56%;
+    margin-left: 0px! important;
+    margin-right: 0px !important;
 }
 
 #left {

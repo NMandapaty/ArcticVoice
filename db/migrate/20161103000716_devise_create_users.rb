@@ -5,7 +5,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :name,          null: false, default: ""
       t.boolean :is_researcher, null: false, default: false
       t.string  :phone
-      t.string  :location
+      t.decimal :latitude
+      t.decimal :longitude
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

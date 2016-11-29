@@ -13,5 +13,6 @@ Rails.application.config.assets.precompile += %w( map.js )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w( location.js )
 
 Rails.application.config.assets.precompile += %w( ckeditor/* )

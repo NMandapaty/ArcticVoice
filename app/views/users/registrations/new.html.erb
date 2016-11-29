@@ -1,4 +1,5 @@
-<h2>Sign up</h2>
+<div class="container" style="margin-top: 50px">
+<h2 style="text-align: center;">Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -24,8 +25,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.hidden_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :longitude %>
+  </div>
+
+  <div class="field">
+    <div id="map" style="margin-left: 25%; margin-right: 25%; width:50%"> </div>
   </div>
 
   <div class="field">
@@ -46,4 +53,14 @@
   </div>
 <% end %>
 
+<%= javascript_include_tag('location.js') %>
+<script>
+function initMap() {
+  locationInit('user_latitude', 'user_longitude');
+};
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFVlMvTZLC8tadlYb1IQ9VDjQrW5v1a5Y&callback=initMap"></script>
+
 <%= render "users/shared/links" %>
+</div>

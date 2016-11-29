@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   get 'home/index'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
@@ -15,8 +16,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  get '/locations' => 'home#locations'
+
   # Post Search
   get '/posts/search' => 'posts#search_posts'
+  # redirect home
+  get '/posts' => 'home#index'
 
   resources :posts
 
