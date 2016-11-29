@@ -1,7 +1,6 @@
 <div class="container" style="text-align:center; margin-top: 50px;">
 	<h2> <%= @user.name %> </h2>
 	<p> <%= @user.email %> </p>
-	<p> Location: <%= @user.location %> </p>
 	<p> Phone: <%= @user.phone %> </p>
 	<% if @is_me %> <a href="/users/edit" class="btn btn-info">Update</a> <% end %>
 </div>

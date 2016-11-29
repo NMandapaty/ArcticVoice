@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20161129063748) do
     t.string   "name",                   default: "",    null: false
     t.boolean  "is_researcher",          default: false, null: false
     t.string   "phone"
-    t.string   "location"
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
