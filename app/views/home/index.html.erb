@@ -74,6 +74,7 @@
   <!-- Scripts -->
   <%= javascript_tag do %>
       var posts = <%=raw @posts.to_json %>;
+      window.authors = <%= raw @posts.map { |p| p.user.name }%>
       window.markers = new Array();
       posts.forEach(function(post) {
           window.markers.push({

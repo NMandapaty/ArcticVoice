@@ -4,12 +4,6 @@ class HomeController < ApplicationController
     respond_to do |format|
       format.html do
         @posts = Post.all
-        @search_keyword = params[:search]
-        if @search_keyword.nil?
-          @posts = Post.all
-        else
-          @posts = Post.all
-        end
       end
     end
   end
