@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   	end
 
   	def create
-	    @post = current_user.posts.build(params[:post].permit(:title, :body, :longitude, :latitude, :tags, :bootsy_image_gallery_id))
+	    @post = current_user.posts.build(params[:post].permit(:title, :body, :longitude, :latitude, :tags))
 	    if @post.save
 	      flash[:notice] = "Saved new post!"
 	      redirect_to @post
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
   	end
 
   	def post_params
-    	params.require(:post).permit(:title, :body, :longitude, :latitude, :bootsy_image_gallery_id)
+    	params.require(:post).permit(:title, :body, :longitude, :latitude)
   	end
 
   	def find_post

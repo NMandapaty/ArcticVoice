@@ -17,5 +17,3 @@
 //= require_tree .
 //= require ckeditor/init
 //= require materialize-sprockets
-//= require gmaps/google
-//= require bootsy

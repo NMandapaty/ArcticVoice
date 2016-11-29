@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   get 'home/index'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
