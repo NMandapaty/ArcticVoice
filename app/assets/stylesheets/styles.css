@@ -18,6 +18,11 @@ body{
 }
 
 
+.form-group > iframe {
+    height: auto !important;
+}
+
+
 .card-title {
   color: black !important;
 }
