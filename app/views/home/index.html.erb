@@ -76,8 +76,13 @@
       var posts = <%=raw @posts.to_json %>;
       window.markers = new Array();
       posts.forEach(function(post) {
-          window.markers.push({lat: post.latitude, lng: post.longitude});
-      })
+          window.markers.push({
+              lat: post.latitude,
+              lng: post.longitude,
+              id: post.id,
+              marker_title: post.title
+          });
+      });
   <% end %>
 
   <script> 
