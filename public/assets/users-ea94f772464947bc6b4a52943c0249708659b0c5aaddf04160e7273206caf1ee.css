@@ -1,0 +1,11 @@
+/* line 6, /Users/eeshanagarwal/cs169/ArcticVoice/app/assets/stylesheets/users.scss */
+.field > label {
+  color: black;
+  font-size: 14px;
+  padding-right: 20px;
+}
+
+/* line 12, /Users/eeshanagarwal/cs169/ArcticVoice/app/assets/stylesheets/users.scss */
+.field > input {
+  font-size: 14px;
+}
