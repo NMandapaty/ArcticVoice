@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   	end
 
   	def create
-	    @post = current_user.posts.build(params[:post].permit(:title, :body, :longitude, :latitude, :tags, :bootsy_image_gallery_id))
+	    @post = current_user.posts.build(params[:post].permit(:title, :body, :longitude, :latitude, :tags))
 	    if @post.save
 	      flash[:notice] = "Saved new post!"
 	      redirect_to @post
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
   	end
 
   	def post_params
-    	params.require(:post).permit(:title, :body, :longitude, :latitude, :bootsy_image_gallery_id)
+    	params.require(:post).permit(:title, :body, :longitude, :latitude)
   	end
 
   	def find_post
@@ -57,7 +57,8 @@ class PostsController < ApplicationController
   	def search_posts
   		term = params[:search_string]
   		# Search posts matching tags, title, location, or author.
-  		@posts = Post.where('tags LIKE :term OR title LIKE :term OR location LIKE :term OR author LIKE :term', term: "%#{term}%")
+		@posts = Post.joins(:user)
+                .where('tags LIKE :term OR title LIKE :term OR location LIKE :term OR name LIKE :term', term: "%#{term}%")
   		render :index
   	end
 end
