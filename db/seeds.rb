@@ -8,11 +8,11 @@
 
 #Todo(Timifasubaa): Make User seeds.
 # User seed
-user1 = User.create(:name => "Joe Garcia", :email => "joe@gmail.com", :password => "test123", :password_confirmation => "test123")
-user2 = User.create(:name => "Olivia Erikkson", :email => "o@gmail.com", :password => "test123", :password_confirmation => "test123")
-user3 = User.create(:name => "Victoria Luu", :email => "v@gmail.com", :password => "test123", :password_confirmation => "test123")
-user4 = User.create(:name => "Arnbjorg Olafur", :email => "a@gmail.com", :password => "test123", :password_confirmation => "test123")
-user5 = User.create(:name => "Whale BigFish", :email => "w@gmail.com", :password => "test123", :password_confirmation => "test123")
+user1 = User.create(:name => "Joe Garcia", :phone => "510-555-2525", :email => "joe@gmail.com", :password => "test123", :password_confirmation => "test123")
+user2 = User.create(:name => "Olivia Erikkson", :phone => "510-696-6111", :email => "o@gmail.com", :password => "test123", :password_confirmation => "test123")
+user3 = User.create(:name => "Victoria Luu", :phone => "510-616-3422", :email => "v@gmail.com", :password => "test123", :password_confirmation => "test123")
+user4 = User.create(:name => "Arnbjorg Olafur", :phone => "510-334-1455", :email => "a@gmail.com", :password => "test123", :password_confirmation => "test123")
+user5 = User.create(:name => "Whale BigFish", :phone => "432-434-0115", :email => "w@gmail.com", :password => "test123", :password_confirmation => "test123")
 
 # Post Seeds
 post1 = Post.create(:title => "The ice level is lower than it was this time last year", :body => "I was here for a hike this time last year and the ice was at least a meter higher than it is right now!", :location => "Norway", :tags => "post1,norway,google", :latitude => 64.521651, :longitude => -43.810070)
