@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'home/index'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
-
+  resources :users, only: [:show]
+  
   devise_scope :user do
     get '/users/sign_in' => "devise/sessions#new", :as => :login
   end
@@ -14,8 +15,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  get '/locations' => 'home#locations'
+
   # Post Search
   get '/posts/search' => 'posts#search_posts'
+  # redirect home
+  get '/posts' => 'home#index'
 
   resources :posts
 

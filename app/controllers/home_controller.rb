@@ -1,16 +1,34 @@
 class HomeController < ApplicationController
+  protect_from_forgery except: :locations
   def index
-    @posts = Post.all
-    @search_keyword = params[:search]
-    if @search_keyword.nil?
-      @posts = Post.all
-    else
-      @posts = Post.all
-      #TODO(Timifasubaa): make it search the tag strings in Post for the search item.
+    respond_to do |format|
+      format.html do
+        @posts = Post.all
+        @search_keyword = params[:search]
+        if @search_keyword.nil?
+          @posts = Post.all
+        else
+          @posts = Post.all
+        end
+      end
     end
-    @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
-      marker.lat post.latitude
-      marker.lng post.longitude
+  end
+
+  def locations
+    respond_to do |format|
+      format.js do
+        @posts = Post.all
+        @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
+          if post.latitude and post.longitude
+            marker.lat post.latitude
+            marker.lng post.longitude
+            marker.title post.title
+            marker.infowindow post.body
+            marker.json({ :id => post.id })
+          end
+        end
+        render :json => @hash.to_json
+      end
     end
   end
 end

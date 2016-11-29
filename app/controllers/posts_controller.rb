@@ -11,8 +11,8 @@ class PostsController < ApplicationController
   	end
 
   	def create
-	    @post = Post.new(params[:post].permit(:title, :body, :longitude, :latitude))
-	    if @post.save 
+	    @post = current_user.posts.build(params[:post].permit(:title, :body, :longitude, :latitude, :tags))
+	    if @post.save
 	      flash[:notice] = "Saved new post!"
 	      redirect_to @post
 	    else
@@ -36,7 +36,6 @@ class PostsController < ApplicationController
 
   	def show
   	end
-
 
   	def destroy
 	    if @post.destroy

@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104031436) do
+ActiveRecord::Schema.define(version: 20161116215714) do
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
     t.integer  "data_file_size"
+    t.string   "data_fingerprint"
     t.integer  "assetable_id"
     t.string   "assetable_type",    limit: 30
     t.string   "type",              limit: 30
@@ -49,6 +50,7 @@ ActiveRecord::Schema.define(version: 20161104031436) do
     t.text     "body"
     t.string   "location"
     t.string   "author"
+    t.integer  "user_id"
     t.string   "tags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
