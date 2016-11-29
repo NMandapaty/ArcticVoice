@@ -17,3 +17,4 @@
 //= require_tree .
 //= require ckeditor/init
 //= require gmaps/google
+//= require bootsy
