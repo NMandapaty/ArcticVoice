@@ -56,9 +56,13 @@ class PostsController < ApplicationController
 
   	def search_posts
   		term = params[:search_string]
+        if term.empty?
+            @posts = Post.all
+        else
   		# Search posts matching tags, title, location, or author.
-		@posts = Post.joins(:user)
+            @posts = Post.joins(:user)
                 .where('tags LIKE :term OR title LIKE :term OR location LIKE :term OR name LIKE :term', term: "%#{term}%")
-  		render :index
+        end
+        render 'home/index'
   	end
 end

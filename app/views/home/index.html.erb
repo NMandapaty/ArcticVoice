@@ -71,15 +71,16 @@
     <div class="col-xs-4"></div>
   </div>
     
-  <script>
-      markers = "<%=raw @hash.to_json %>";
-      $(document).load(function(){
-        initialize();
-      });
-  </script>
-
 
   <!-- Scripts -->
+  <%= javascript_tag do %>
+      var posts = <%=raw @posts.to_json %>;
+      window.markers = new Array();
+      posts.forEach(function(post) {
+          window.markers.push({lat: post.latitude, lng: post.longitude});
+      })
+  <% end %>
+
   <script> 
     $(document).ready(function () {
       $( ".show-comments" ).click(function() {
@@ -94,3 +95,5 @@
       });
     });
   </script>
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFVlMvTZLC8tadlYb1IQ9VDjQrW5v1a5Y&callback=setupMarkers"></script>

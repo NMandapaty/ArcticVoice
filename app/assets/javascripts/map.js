@@ -1,22 +1,5 @@
-jQuery(function($) {
-    // Asynchronously Load the map API 
-    var script = document.createElement('script');
-    script.src = "//maps.googleapis.com/maps/api/js?key=AIzaSyDCXxias-6mCmt3Q02JwxUeKQEJJQtMEb8&sensor=false&callback=setupMarkers";
-    document.body.appendChild(script);
-});
-
 function setupMarkers () {
-    var markers = new Array();
-    $.ajax({
-      url: '/locations.js',
-      method:'GET',
-      success: function(data){
-        markers = $.parseJSON(data);  
-        markers = markers.filter(function(n){ return n["lat"] != undefined }); 
-        initialize(markers);  
-      }
-    });
-
+  initialize(window.markers);
 }
 
 function initialize(markers) {
