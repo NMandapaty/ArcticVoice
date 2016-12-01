@@ -13,9 +13,9 @@ https://www.pivotaltracker.com/n/projects/1887921
 https://arcticvoice.herokuapp.com/
 
 ###CodeClimate and Travis-CI
-[![Code Climate](https://codeclimate.com/repos/58228fdb26f447005a002629/badges/d718120d2dfb922fc2b7/gpa.svg)](https://codeclimate.com/repos/58228fdb26f447005a002629/feed)
+[![Code Climate](https://codeclimate.com/github/NMandapaty/ArcticVoice/badges/gpa.svg)](https://codeclimate.com/github/NMandapaty/ArcticVoice)
 
-[![Test Coverage](https://codeclimate.com/repos/58228fdb26f447005a002629/badges/d718120d2dfb922fc2b7/coverage.svg)](https://codeclimate.com/repos/58228fdb26f447005a002629/coverage)
+[![Test Coverage](https://codeclimate.com/github/NMandapaty/ArcticVoice/badges/coverage.svg)](https://codeclimate.com/github/NMandapaty/ArcticVoice/coverage)
 
 [![Build Status](https://travis-ci.org/NMandapaty/ArcticVoice.svg?branch=master)](https://travis-ci.org/NMandapaty/ArcticVoice)
 
