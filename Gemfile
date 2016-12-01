@@ -55,7 +55,7 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'database_cleaner'
-  gem 'factory_girl'
+  gem 'factory_girl' 
   gem "simplecov"
   gem 'sqlite3'
   gem "codeclimate-test-reporter", "~> 1.0.0"
