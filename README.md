@@ -3,7 +3,7 @@ This portal allows researchers and inhabitants of the Arctic share information a
 
 Version Information:
 Rake: 11.3  
-Ruby: 2.2  
+Ruby: 2.3.0
 Rails: 4.2.7  
 
 ###Pivotal Tracker Project
