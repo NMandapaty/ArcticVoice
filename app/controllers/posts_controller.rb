@@ -67,7 +67,7 @@ class PostsController < ApplicationController
             @posts = Post.all
         else
   		# Search posts matching tags, title, location, or author.
-            @posts = Post.where('tags ILIKE :term OR title ILIKE :term OR location ILIKE :term', term: "%#{term}%") | Post.joins(:user).where('name ILIKE :term', term: "%#{term}%")
+            @posts = Post.where('tags LIKE :term OR title LIKE :term OR location LIKE :term', term: "%#{term}%") | Post.joins(:user).where('name LIKE :term', term: "%#{term}%")
         end
         render 'home/index'
   	end
