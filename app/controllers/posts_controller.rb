@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   	def update
 	    if @post.update_attributes(post_params)
 	      flash[:notice] = "Updated post!"
-	      redirect_to post_path(@posts)
+	      redirect_to post_path(@post)
 	    else
 	      flash[:alert] = "Error-d while updating post!"
 	      render :edit
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
 
   	def search_posts
   		term = params[:search_string]
-        if term.empty?
+        if term.nil?
             @posts = Post.all
         else
   		# Search posts matching tags, title, location, or author.
