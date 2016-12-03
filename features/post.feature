@@ -1,18 +1,18 @@
-Feature: User can view forum discussions
-	- User can scroll through posts classfied by tags or recent
-	- User can click on a tag and see only posts for that tag
+Feature: Create a post
+  As a resident of the arctic
+  So as to create awareness for changes int he arctic
+  I want to make a post of a change in my surroundings
 
-Feature: User can view a post
-	- User can view the entry and all associated media content
-	- User is not required to log in
-
-Feature: User can post
-	- User cannot post unless logged in
-	- when posting, user can specify location, assign tags and add a brief description
-	- Does not post unless button is clicked
-	- Informs user once post has been published
-
-Feature: User can search through posts
-	- User can type keywords and look up search results ordered by relevance and tags.
-	- User does not need to click to search
-	- Begins searching as user starts typing
+  Background:
+    Given I am on the home page
+    And I am logged in 
+    And I follow "New Post"
+    And I fill in "post_title" with "THe ice is melting"
+    And I fill in "post_body" with "The ice is a lot lower than it was when I saw it a year ago"
+    And I fill in "post_tags" with "save the planet"
+    And I press "Create Post"
+    Then I should see "save the planet"
+    And I should see "THe ice is melting"
+    And I should see "lower than it as when I saw it a year ago"
+    And I should not see "What is this"
+    And I should see "Testy McUserton"
