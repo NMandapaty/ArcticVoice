@@ -11,7 +11,7 @@ function initialize(markers) {
     // Info Window Content
     var infoWindowContent =  new Array();
     for( i = 0; i < markers.length; i++ ) {
-      infoWindowContent.push(['<div class="info_content">' + "<h3><a href='/posts/" +  markers[i]["id"] + "'" + 'target="_blank" rel="noopener noreferrer">' + markers[i]["marker_title"] + '</a></h3>' + '<p>'+ markers[i]["marker_title"]  + '</p>' + '</div>']);
+      infoWindowContent.push(['<div class="info_content">' + "<h3><a href='/posts/" +  markers[i]["id"] + "'" + 'target="_blank" rel="noopener noreferrer">' + markers[i]["marker_title"] + '</a></h3>' + '<p>'+ window.authors[i] + '</p>' + '</div>']);
     }
     // Display multiple markers on a map
     var infoWindow = new google.maps.InfoWindow(), marker, i;

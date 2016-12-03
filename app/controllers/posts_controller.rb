@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   	end
 
   	def create
-	    @post = current_user.posts.build(params[:post].permit(:title, :body, :longitude, :latitude, :tags))
+	    @post = current_user.posts.build(params.require(:post).permit(:title, :body, :longitude, :latitude, :tags))
 	    if @post.save
 	      flash[:notice] = "Saved new post!"
 	      redirect_to @post
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   	def update
 	    if @post.update_attributes(post_params)
 	      flash[:notice] = "Updated post!"
-	      redirect_to post_path(@posts)
+	      redirect_to post_path(@post)
 	    else
 	      flash[:alert] = "Error-d while updating post!"
 	      render :edit
@@ -38,12 +38,19 @@ class PostsController < ApplicationController
   	end
 
   	def destroy
-	    if @post.destroy
-	      flash[:notice] = "Deleted post!"
-	      redirect_to posts_path
-	    else
-	      flash[:alert] = "Error-d while trying to delete post!"
-	    end
+      begin
+        @delete_post = Post.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        @delete_post = nil
+      end
+     
+      if @delete_post.present?
+        flash[:notice] = "Deleted post!"
+        @delete_post.destroy
+      else
+        flash[:alert] = "Error-d while trying to delete post!"
+      end
+      redirect_to posts_path
   	end
 
   	def post_params
@@ -56,12 +63,11 @@ class PostsController < ApplicationController
 
   	def search_posts
   		term = params[:search_string]
-        if term.empty?
+        if term.nil?
             @posts = Post.all
         else
   		# Search posts matching tags, title, location, or author.
-            @posts = Post.joins(:user)
-                .where('tags LIKE :term OR title LIKE :term OR location LIKE :term OR name LIKE :term', term: "%#{term}%")
+            @posts = Post.where('tags LIKE :term OR title LIKE :term OR location LIKE :term', term: "%#{term}%") | Post.joins(:user).where('name LIKE :term', term: "%#{term}%")
         end
         render 'home/index'
   	end

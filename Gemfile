@@ -20,6 +20,7 @@ gem 'non-stupid-digest-assets'
 gem 'geocoder'
 gem 'gmaps4rails'
 
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -54,7 +55,7 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'database_cleaner'
-  gem 'factory_girl'
+  gem 'factory_girl' 
   gem "simplecov"
   gem 'sqlite3'
   gem "codeclimate-test-reporter", "~> 1.0.0"
