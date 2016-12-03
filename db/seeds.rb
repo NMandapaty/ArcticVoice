@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-#Todo(Timifasubaa): Make User seeds.
 # User seed
 user1 = User.create(:name => "Joe Garcia", :phone => "510-555-2525", :email => "joe@gmail.com", :password => "test123", :password_confirmation => "test123")
 user2 = User.create(:name => "Olivia Erikkson", :phone => "510-696-6111", :email => "o@gmail.com", :password => "test123", :password_confirmation => "test123")
