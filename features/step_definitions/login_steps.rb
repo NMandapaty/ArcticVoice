@@ -5,11 +5,6 @@ def create_visitor
     :password => "changeme", :password_confirmation => "changeme" }
 end
 
-def create_visitor_joe
-  @visitor ||= { :name => "Joe Garcia", :email => "joe@example.com",
-    :password => "changeme", :password_confirmation => "changeme" }
-end
-
 def find_user
   @user ||= User.where(:email => @visitor[:email]).first
 end
@@ -28,23 +23,9 @@ def create_user
   @user = FactoryGirl.create(:user, @visitor)
 end
 
-def create_user_joe
-  #FactoryGirl.find_definitions
-  create_visitor_joe
-  delete_user
-  @user = FactoryGirl.create(:user, @visitor)
-end
-
 def create_user_repeat
   #FactoryGirl.find_definitions
   create_visitor
-  delete_user
-  @user = FactoryGirl.create(:user, @visitor)
-end
-
-def create_user_joe_repeat
-  #FactoryGirl.find_definitions
-  create_visitor_joe
   delete_user
   @user = FactoryGirl.create(:user, @visitor)
 end
