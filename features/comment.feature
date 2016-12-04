@@ -1,9 +1,23 @@
-Feature: User can comment on a post
-	- User cannot comment unless logged in
-	- Does not publish comment unless button is clicked
-	- Informs user once comment has been published
-
-Feature: User can edit a comment 
-  - User cannot edit comment unless he/she posted that comment
-  - Comment is not modified unless button is clicked
-  - Informs user once comment has been modified
+Feature: search for a post 
+  As a climate hange activist
+  So that I can learn more about the developments in the arctic
+  I want to search for a post
+    
+  Scenario: Create a post and search for it
+    Given I am on the home page
+    And I exist as a user
+    And I am logged in 
+    And I follow "New Post"
+    And I fill in "post_title" with "Post 1"
+    And I fill in "post_body" with "Body of Post 1"
+    And I fill in "post_tags" with "hello, hi, wow"
+    And I press "Create Post"
+    Then I should see "hi"
+    And I should see "hello"
+    And I should see "Post 1"
+    And I should see "Body of Post 1"
+    And I should not see "What is this"
+    And I should see "Testy McUserton"
+    And I fill in "search_string" with "Post 1"
+    And I tap the "enter key"
+    Then I should see "hello"

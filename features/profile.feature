@@ -8,7 +8,6 @@ Feature: View user profile
     And I am logged in 
     And I follow "My Profile"
     Then I should see "Testy McUserton"
-    Given I am not logged in
     
     
     

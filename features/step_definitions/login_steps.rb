@@ -23,6 +23,13 @@ def create_user
   @user = FactoryGirl.create(:user, @visitor)
 end
 
+def create_user_2
+  #FactoryGirl.find_definitions
+  create_visitor
+  delete_user
+  @user = FactoryGirl.create(:user, @visitor)
+end
+
 def delete_user
   @user ||= User.where(:email => @visitor[:email]).first
   @user.destroy unless @user.nil?
@@ -52,7 +59,8 @@ Given /^I am not logged in$/ do
 end
 
 Given /^I am logged in$/ do
-  create_user
+  create_user_2
+  find_user
   sign_in
 end
 
