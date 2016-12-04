@@ -16,6 +16,7 @@ Feature: Comment on a post
   Scenario: Add comment to a post
     Then I should see "ice is melting"
     And I should see "View Comments"
+    And I follow "View Comments"
     # And I fill in "title" with "New Comment"
     # And I fill in "comment" with "That sounds interesting."
     # And I press "Submit"
