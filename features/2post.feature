@@ -2,6 +2,7 @@ Feature: Create a post
   As a resident of the arctic
   So as to create awareness for changes int he arctic
   I want to make a post of a change in my surroundings
+  Also to check whether I can comment on the post
   
   Background:
     Given I am on the home page

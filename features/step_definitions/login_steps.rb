@@ -1,7 +1,12 @@
 ### UTILITY METHODS ###
 
 def create_visitor
-  @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
+  @visitor ||= { :name => "Testy McUserton", :email => "testy@example.com",
+    :password => "changeme", :password_confirmation => "changeme" }
+end
+
+def create_visitor_joe
+  @visitor ||= { :name => "Joe Garcia", :email => "joe@example.com",
     :password => "changeme", :password_confirmation => "changeme" }
 end
 
@@ -23,9 +28,23 @@ def create_user
   @user = FactoryGirl.create(:user, @visitor)
 end
 
-def create_user_2
+def create_user_joe
+  #FactoryGirl.find_definitions
+  create_visitor_joe
+  delete_user
+  @user = FactoryGirl.create(:user, @visitor)
+end
+
+def create_user_repeat
   #FactoryGirl.find_definitions
   create_visitor
+  delete_user
+  @user = FactoryGirl.create(:user, @visitor)
+end
+
+def create_user_joe_repeat
+  #FactoryGirl.find_definitions
+  create_visitor_joe
   delete_user
   @user = FactoryGirl.create(:user, @visitor)
 end
@@ -59,7 +78,7 @@ Given /^I am not logged in$/ do
 end
 
 Given /^I am logged in$/ do
-  create_user_2
+  create_user_repeat
   find_user
   sign_in
 end

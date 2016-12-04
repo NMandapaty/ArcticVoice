@@ -2,15 +2,12 @@
 #   As an engaged resident of the arctic 
 #   So that I can express interest in a topic
 #   I comment on a post
+  
+#   Background:
+#     Given I am on the home page
+#     And I am logged in
     
 #   Scenario: Create a post and comment on it
-#     Given I am on the home page
-#     And I am logged in 
-#     And I follow "New Post"
-#     And I fill in "post_title" with "Post 1"
-#     And I fill in "post_body" with "Body of Post 1"
-#     And I fill in "post_tags" with "hello, hi, wow"
-#     And I press "Create Post"
 #     Then I should see "hi"
 #     And I should see "hello"
 #     And I should see "Post 1"
