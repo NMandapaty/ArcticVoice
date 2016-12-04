@@ -29,3 +29,6 @@ Feature: User can register
     And I should see "Logout"
     And I should see "Profile"
     And I should not see "Log In"
+    
+  Scenario:
+    Given I exist as a user
