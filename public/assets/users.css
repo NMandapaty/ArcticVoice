@@ -1,3 +1,4 @@
+
 /* line 6, /home/ubuntu/workspace/ArcticVoice/app/assets/stylesheets/users.scss */
 .field > label {
   color: black;
@@ -9,3 +10,5 @@
 .field > input {
   font-size: 14px;
 }
+.field>label{color:black;font-size:14px;padding-right:20px}.field>input{font-size:14px}
+
